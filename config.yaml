@@ -1,0 +1,66 @@
+model_list:
+  # ==========================================
+  # ARCHITECT MODEL DEPLOYMENTS (Key Rotation)
+  # ==========================================
+  - model_name: arch-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/A1
+  - model_name: arch-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/A2
+  - model_name: arch-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/A3
+  - model_name: arch-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/A4
+  - model_name: arch-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/A5
+  - model_name: arch-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/A6
+
+  # ==========================================
+  # EDITOR MODEL DEPLOYMENTS (Key Rotation)
+  # ==========================================
+  - model_name: editor-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/E1
+  - model_name: editor-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/E2
+  - model_name: editor-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/E3
+  - model_name: editor-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/E4
+  - model_name: editor-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/E5
+  - model_name: editor-model
+    litellm_params:
+      model: gemini/gemini-3.6-flash
+      api_key: os.environ/E6
+
+litellm_settings:
+  # अगर कोई API Key एरर देती है (जैसे 429 Rate Limit), 
+  # तो बैकएंड में यह बिना Aider को क्रैश किए 3 बार दूसरी keys के साथ रिट्राई करेगा।
+  num_retries: 3 
+
+router_settings:
+  # यह लोड को सभी keys में डिस्ट्रीब्यूट करेगा।
+  # इससे कोई एक key जल्दी एग्जॉस्ट (exhaust) नहीं होगी।
+  routing_strategy: round_robin 
