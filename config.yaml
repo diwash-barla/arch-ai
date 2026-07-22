@@ -63,4 +63,4 @@ litellm_settings:
 router_settings:
   # यह लोड को सभी keys में डिस्ट्रीब्यूट करेगा।
   # इससे कोई एक key जल्दी एग्जॉस्ट (exhaust) नहीं होगी।
-  routing_strategy: round_robin 
+  routing_strategy: simple-shuffle 
